@@ -39,7 +39,7 @@ const CommissionSettings = () => {
         const response = await fetch(
           `${import.meta.env.VITE_APP_BACKEND_URL}/adminDashboard/get-commission/${endpoint}`,
           {
-            headers: { Authorization: `Bearer ${token}` }
+            // headers: { Authorization: `Bearer ${token}` }
           }
         );
 
