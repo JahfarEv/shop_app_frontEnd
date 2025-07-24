@@ -385,13 +385,13 @@ const roleConfig = {
     authField: 'email'
   },
   salesman: {
-    api: 'http://localhost:8000/api/salesman/login',
+    api: `${import.meta.env.VITE_APP_BACKEND_URL}/api/salesman/login`,
     tokenKey: 'salesmanToken',
     dashboard: '/salesman/dashboard',
     authField: 'mobileNumber'
   },
   manager: {
-    api: 'http://localhost:8000/api/manager/login',
+    api: `${import.meta.env.VITE_APP_BACKEND_URL}/api/manager/login`,
     tokenKey: 'managerToken',
     dashboard: '/manager/dashboard',
     authField: 'mobileNumber'
