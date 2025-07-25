@@ -8,7 +8,7 @@
 
 .admin-login-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #8A2BE2 0%, #00CED1 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,7 +31,7 @@
   left: 25%;
   width: 320px;
   height: 320px;
-  background: rgba(102, 126, 234, 0.15);
+  background: rgba(138, 43, 226, 0.2);
   animation-delay: 0s;
 }
 
@@ -40,7 +40,7 @@
   right: 25%;
   width: 280px;
   height: 280px;
-  background: rgba(118, 75, 162, 0.15);
+  background: rgba(0, 206, 209, 0.2);
   animation-delay: 1s;
 }
 
@@ -49,7 +49,7 @@
   left: 33%;
   width: 200px;
   height: 200px;
-  background: rgba(255, 107, 107, 0.12);
+  background: rgba(255, 105, 180, 0.15);
   animation-delay: 2s;
 }
 
@@ -58,7 +58,7 @@
   right: 33%;
   width: 240px;
   height: 240px;
-  background: rgba(78, 205, 196, 0.12);
+  background: rgba(255, 215, 0, 0.15);
   animation-delay: 3s;
 }
 
@@ -79,11 +79,11 @@
   z-index: 10;
   width: 100%;
   max-width: 400px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(20px);
   border-radius: 20px;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -105,7 +105,7 @@
   justify-content: center;
   width: 64px;
   height: 64px;
-  background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+  background: linear-gradient(135deg, #FF69B4 0%, #FFD700 100%);
   border-radius: 50%;
   margin-bottom: 1rem;
   transition: transform 0.3s ease;
@@ -125,7 +125,7 @@
 }
 
 .header-subtitle {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.875rem;
   line-height: 1.4;
 }
@@ -143,7 +143,7 @@
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   margin-bottom: 0.5rem;
 }
 
@@ -163,8 +163,8 @@
 .form-input {
   width: 100%;
   padding: 12px 16px 12px 40px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   border-radius: 12px;
   color: white;
   font-size: 1rem;
@@ -174,13 +174,13 @@
 }
 
 .form-input:focus {
-  border-color: rgba(255, 107, 107, 0.8);
-  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
-  background: rgba(255, 255, 255, 0.15);
+  border-color: #FF69B4;
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.3);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .form-input:focus + .input-icon {
-  color: #ff6b6b;
+  color: #FF69B4;
 }
 
 .form-input::placeholder {
@@ -199,14 +199,14 @@
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
   transition: color 0.2s ease;
   padding: 4px;
 }
 
 .password-toggle:hover {
-  color: white;
+  color: #FFD700;
 }
 
 /* Error Message */
@@ -215,8 +215,8 @@
   align-items: center;
   gap: 8px;
   padding: 12px;
-  background: rgba(255, 107, 107, 0.2);
-  border: 1px solid rgba(255, 107, 107, 0.4);
+  background: rgba(255, 105, 180, 0.25);
+  border: 1px solid rgba(255, 105, 180, 0.5);
   border-radius: 8px;
   color: #ffffff;
   font-size: 0.875rem;
@@ -234,7 +234,7 @@
 /* Submit Button */
 .submit-button {
   width: 100%;
-  background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+  background: linear-gradient(135deg, #FF69B4 0%, #FFD700 100%);
   color: white;
   font-weight: 600;
   padding: 14px 24px;
@@ -267,9 +267,9 @@
 }
 
 .submit-button:hover {
-  background: linear-gradient(135deg, #ee5a52 0%, #26a69a 100%);
+  background: linear-gradient(135deg, #FF1493 0%, #FFA500 100%);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
 }
 
 .submit-button:active {
@@ -310,7 +310,23 @@
 
 .footer-text {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.register-link {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.register-link a {
+  color: #FFD700;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  color: #FF69B4;
+  text-decoration: underline;
 }
 
 /* Responsive Design */
@@ -372,12 +388,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(102, 126, 234, 0.5);
+  background: rgba(138, 43, 226, 0.5);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(102, 126, 234, 0.7);
+  background: rgba(138, 43, 226, 0.7);
 }
 
 /* Accessibility Improvements */
@@ -392,24 +408,24 @@
 /* Focus States for Better Accessibility */
 .submit-button:focus,
 .password-toggle:focus {
-  outline: 3px solid rgba(255, 107, 107, 0.5);
+  outline: 3px solid rgba(255, 105, 180, 0.5);
   outline-offset: 2px;
 }
 
 /* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
   .login-card {
-    background: rgba(40, 44, 52, 0.3);
+    background: rgba(30, 30, 40, 0.4);
     backdrop-filter: blur(20px);
   }
   
   .form-input {
-    background: rgba(40, 44, 52, 0.5);
+    background: rgba(30, 30, 40, 0.6);
     border-color: rgba(255, 255, 255, 0.2);
   }
   
   .form-input:focus {
-    background: rgba(40, 44, 52, 0.7);
-    border-color: rgba(255, 107, 107, 0.6);
+    background: rgba(30, 30, 40, 0.8);
+    border-color: #FF69B4;
   }
 }

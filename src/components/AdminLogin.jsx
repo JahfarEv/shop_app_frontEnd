@@ -504,7 +504,7 @@ export default function LoginPage() {
               <div className="input-wrapper">
                 <Phone className="input-icon" size={20} />
                 <input
-                  type="number"
+                  type="text"
                   value={mobileNumber}
                   onChange={(e) => setMobileNumber(e.target.value)}
                   required
@@ -565,6 +565,13 @@ export default function LoginPage() {
               </>
             )}
           </button>
+
+          {(role === 'salesman' || role === 'manager') && (
+  <div className="register-link">
+    <p>Don't have an account? <a href={`/${role}/register`}>Register here</a></p>
+  </div>
+)}
+
         </form>
 
         <div className="login-footer">
