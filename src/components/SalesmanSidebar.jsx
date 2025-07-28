@@ -1,44 +1,69 @@
-import { Link } from "react-router-dom";
-import { FiHome, FiUser, FiShoppingBag, FiDollarSign, FiLogOut } from "react-icons/fi";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import "../stylesheets/SalesDashboard.css";
 
-const SalesmanSidebar = ({ isOpen, toggleSidebar, salesmanData, handleLogout }) => {
+export default function SalesmanSidebar({
+  isSidebarOpen,
+  toggleSidebar,
+  salesmanData,
+}) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleLogout = () => {
+    localStorage.removeItem("salesmanToken");
+    navigate("/");
+  };
+
+  // Function to check if a link is active
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
+
   return (
-    <aside className={`sidebar ${isOpen ? "open" : ""}`}>
-      <div className="sidebar-header">
-        <div className="avatar">
-          {salesmanData?.name?.charAt(0) || "S"}
-        </div>
-        <h3>Salesman Portal</h3>
-        <button className="close-btn" onClick={toggleSidebar}>
-          &times;
-        </button>
-      </div>
-
-      <nav className="sidebar-nav">
-        <Link to="/salesman/dashboard" className="nav-link">
-          <FiHome className="nav-icon" />
-          <span>Overview</span>
-        </Link>
-        <Link to="/salesman/profile" className="nav-link active">
-          <FiUser className="nav-icon" />
-          <span>Profile</span>
-        </Link>
-        <Link to="/salesman/shops" className="nav-link">
-          <FiShoppingBag className="nav-icon" />
-          <span>My Shops</span>
-        </Link>
-        <Link to="/salesman/commission" className="nav-link">
-          <FiDollarSign className="nav-icon" />
-          <span>Commission</span>
-        </Link>
-      </nav>
-
-      <button className="logout-btn" onClick={handleLogout}>
-        <FiLogOut className="nav-icon" />
-        <span>Logout</span>
+    <>
+      <button className="sm-menu-toggle" onClick={toggleSidebar}>
+        {isSidebarOpen ? "✕" : "☰"}
       </button>
-    </aside>
-  );
-};
 
-export default SalesmanSidebar;
+      <aside className={`sm-sidebar ${isSidebarOpen ? "sm-sidebar-open" : ""}`}>
+        <div className="sm-sidebar-header">
+          <div className="sm-avatar">
+            {salesmanData?.name?.charAt(0) || "S"}
+          </div>
+          <h3>Salesman Portal</h3>
+        </div>
+
+        <nav className="sm-nav">
+          <Link 
+            to="/salesman/dashboard" 
+            className={`sm-nav-link ${isActive("/salesman/dashboard") ? "sm-active" : ""}`}
+          >
+            <span className="sm-nav-icon">📊</span> Overview
+          </Link>
+          <Link 
+            to="/salesman/profile" 
+            className={`sm-nav-link ${isActive("/salesman/profile") ? "sm-active" : ""}`}
+          >
+            <span className="sm-nav-icon">👤</span> Profile
+          </Link>
+          <Link 
+            to="/salesman/shops" 
+            className={`sm-nav-link ${isActive("/salesman/shops") ? "sm-active" : ""}`}
+          >
+            <span className="sm-nav-icon">🏪</span> My Shops
+          </Link>
+          <Link 
+            to="/salesman/commission" 
+            className={`sm-nav-link ${isActive("/salesman/commission") ? "sm-active" : ""}`}
+          >
+            <span className="sm-nav-icon">💰</span> Commission
+          </Link>
+        </nav>
+
+        <button className="sm-logout-btn" onClick={handleLogout}>
+          <span className="sm-nav-icon">🚪</span> Logout
+        </button>
+      </aside>
+    </>
+  );
+}

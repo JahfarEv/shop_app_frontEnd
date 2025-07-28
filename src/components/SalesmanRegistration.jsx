@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../stylesheets/SalesmanRegistration.css';
 
@@ -14,13 +14,36 @@ const SalesmanRegistration = () => {
     pancardNumber: '',
     password: '',
     confirmPassword: '',
-    managerMobile: '',
-    managerName: ''
+    managerId: '' // Only storing manager ID now
   });
 
+  const [managers, setManagers] = useState([]);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+  const [loadingManagers, setLoadingManagers] = useState(false);
+
+  // Fetch managers on component mount
+  useEffect(() => {
+    const fetchManagers = async () => {
+      try {
+        setLoadingManagers(true);
+        const response = await fetch('http://localhost:8000/api/manager/managers');
+        const data = await response.json();
+        if (response.ok) {
+          setManagers(data);
+        } else {
+          console.error('Failed to fetch managers:', data.message);
+        }
+      } catch (error) {
+        console.error('Error fetching managers:', error);
+      } finally {
+        setLoadingManagers(false);
+      }
+    };
+
+    fetchManagers();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,6 +72,8 @@ const SalesmanRegistration = () => {
       newErrors.password = 'Password must be at least 8 characters';
     if (formData.password !== formData.confirmPassword)
       newErrors.confirmPassword = 'Passwords do not match';
+    if (!formData.managerId)
+      newErrors.managerId = 'Please select a manager';
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -64,13 +89,16 @@ const SalesmanRegistration = () => {
     try {
       const { confirmPassword, ...dataToSend } = formData;
       
-      const response = await fetch('/api/salesmen/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dataToSend)
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_APP_BACKEND_URL}/api/salesman/register`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(dataToSend),
+        }
+      );
 
       const data = await response.json();
 
@@ -113,8 +141,10 @@ const SalesmanRegistration = () => {
           </div>
         )}
 
-             <form onSubmit={handleSubmit}>
-          <div className="form-group">
+        <form onSubmit={handleSubmit}>
+          {/* All your existing form fields remain the same */}
+
+           <div className="form-group">
             <label htmlFor="name">Full Name</label>
             <input
               type="text"
@@ -240,33 +270,32 @@ const SalesmanRegistration = () => {
           </div>
 
           <div className="manager-section">
-            <h4>Manager Details (Optional)</h4>
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="managerName">Manager Name</label>
-                <input
-                  type="text"
-                  id="managerName"
-                  name="managerName"
-                  value={formData.managerName}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="managerMobile">Manager Mobile</label>
-                <input
-                  type="tel"
-                  id="managerMobile"
-                  name="managerMobile"
-                  value={formData.managerMobile}
-                  onChange={handleChange}
-                />
-              </div>
+            <h4>Select Your Manager</h4>
+            <div className="form-group">
+              <label htmlFor="managerId">Manager *</label>
+              <select
+                id="managerId"
+                name="managerId"
+                value={formData.managerId}
+                onChange={handleChange}
+                className={errors.managerId ? 'error' : ''}
+                required
+              >
+                <option value="">-- Select Manager --</option>
+                {loadingManagers ? (
+                  <option>Loading managers...</option>
+                ) : (
+                  managers.map(manager => (
+                    <option key={manager._id} value={manager._id}>
+                      {manager.name} ({manager.mobileNumber})
+                    </option>
+                  ))
+                )}
+              </select>
+              {errors.managerId && <span className="error-text">{errors.managerId}</span>}
             </div>
           </div>
 
-         
-          
           <button 
             type="submit" 
             className="submit-button"
