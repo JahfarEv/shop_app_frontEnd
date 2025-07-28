@@ -28,7 +28,7 @@ const SalesmanRegistration = () => {
     const fetchManagers = async () => {
       try {
         setLoadingManagers(true);
-        const response = await fetch('http://localhost:8000/api/manager/managers');
+        const response = await fetch('https://shop-app-backend-k0a2.onrender.com/api/manager/managers');
         const data = await response.json();
         if (response.ok) {
           setManagers(data);
