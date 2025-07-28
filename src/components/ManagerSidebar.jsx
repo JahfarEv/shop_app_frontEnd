@@ -1,16 +1,15 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import "../stylesheets/SalesDashboard.css";
 
-export default function SalesmanSidebar({
+export default function ManagerSidebar({
   isSidebarOpen,
   toggleSidebar,
-  salesmanData,
+  managerData,
 }) {
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleLogout = () => {
-    localStorage.removeItem("salesmanToken");
+    localStorage.removeItem("managerToken");
     navigate("/");
   };
 
@@ -28,9 +27,9 @@ export default function SalesmanSidebar({
       <aside className={`sm-sidebar ${isSidebarOpen ? "sm-sidebar-open" : ""}`}>
         <div className="sm-sidebar-header">
           <div className="sm-avatar">
-            {salesmanData?.name?.charAt(0) || "S"}
+            {managerData?.name?.charAt(0) || "S"}
           </div>
-          <h3>Salesman Portal</h3>
+          <h3>{managerData?.name}</h3>
         </div>
 
         <nav className="sm-nav">

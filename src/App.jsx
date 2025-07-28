@@ -14,17 +14,19 @@ import CommissionSettings from "./components/CommisionSettings";
 import SalesmanProfile from "./components/SalesmanProfile";
 import SalesmanRegistration from "./components/SalesmanRegistration";
 import ManagerRegistration from "./components/ManagerRegistration";
+import ManagerDashboard from "./components/ManagerDashboard";
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<AdminButton />} />
+        <Route path="/" element={<AdminDashboard />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/salesman/register" element={< SalesmanRegistration/>} />
                 <Route path="/manager/register" element={< ManagerRegistration/>} />
 
+        <Route path="/manager/dashboard" element={<ManagerDashboard />} />
 
-        <Route path="/salesman/dashboard" element={<SalesManDashboard />} />
+        <Route path="/salesman/dashboard" element={< SalesManDashboard/>} />
         <Route path="/salesman/profile" element={<SalesmanProfile />} />
 
         <Route path="/admin/login" element={<AdminLogin />} />
