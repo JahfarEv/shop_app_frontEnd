@@ -15,6 +15,7 @@ import SalesmanProfile from "./components/SalesmanProfile";
 import SalesmanRegistration from "./components/SalesmanRegistration";
 import ManagerRegistration from "./components/ManagerRegistration";
 import ManagerDashboard from "./components/ManagerDashboard";
+import SalesmanShopsDashboard from "./components/SalesmanShops";
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
 
         <Route path="/salesman/dashboard" element={< SalesManDashboard/>} />
         <Route path="/salesman/profile" element={<SalesmanProfile />} />
+        <Route path="/salesman/shops" element={<SalesmanShopsDashboard />} />
 
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/users" element={<UserManagement />} />

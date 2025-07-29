@@ -67,7 +67,9 @@ export default function SalesmanDashboard() {
               (sum, shop) => sum + (shop.totalSales || 0),
               0
             );
-            const commission = detailsData.salesman.salesCommissionEarned || 0;
+            console.log(detailsData,'detaildata');
+            
+            const commission = detailsData.salesman.salesCommissionEarned?.[0].amount || 0;
 
             setTotalAmount(amount);
             setTotalCommission(commission);
@@ -152,7 +154,8 @@ export default function SalesmanDashboard() {
             <div className="sm-stat-content">
               <h3>Total Sales</h3>
               <p className="sm-stat-value">
-                {totalAmount.toLocaleString("en-IN", {
+              
+                {totalCommission.toLocaleString("en-IN", {
                   style: "currency",
                   currency: "INR",
                   maximumFractionDigits: 0,
@@ -167,7 +170,7 @@ export default function SalesmanDashboard() {
             <div className="sm-stat-content">
               <h3>Your Commission</h3>
               <p className="sm-stat-value">
-                {totalCommission.toLocaleString("en-IN", {
+                {totalAmount.toLocaleString("en-IN", {
                   style: "currency",
                   currency: "INR",
                   maximumFractionDigits: 0,
@@ -221,6 +224,10 @@ export default function SalesmanDashboard() {
                 <span className="sm-detail-label">Mobile:</span>
                 <span className="sm-detail-value">{salesmanData?.mobileNumber}</span>
               </div>
+              <div className="sm-detail-item">
+                <span className="sm-detail-label">Manager:</span>
+                <span className="sm-detail-value">{salesmanData?.manager || "N/A"}</span>
+              </div>
             </div>
 
             {salesmanData?.bankAccountNumber && (
@@ -237,6 +244,10 @@ export default function SalesmanDashboard() {
                 <div className="sm-detail-item">
                   <span className="sm-detail-label">IFSC:</span>
                   <span className="sm-detail-value">{salesmanData.ifscCode}</span>
+                </div>
+                 <div className="sm-detail-item">
+                  <span className="sm-detail-label">PAN:</span>
+                  <span className="sm-detail-value">{salesmanData.pancardNumber}</span>
                 </div>
               </div>
             )}

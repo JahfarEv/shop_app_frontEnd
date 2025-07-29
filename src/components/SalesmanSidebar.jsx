@@ -34,30 +34,30 @@ export default function SalesmanSidebar({
         </div>
 
         <nav className="sm-nav">
-          <Link 
-            to="/salesman/dashboard" 
-            className={`sm-nav-link ${isActive("/salesman/dashboard") ? "sm-active" : ""}`}
+          <Link
+            to="/salesman/dashboard"
+            className={`sm-nav-link ${
+              isActive("/salesman/dashboard") ? "sm-active" : ""
+            }`}
           >
             <span className="sm-nav-icon">📊</span> Overview
           </Link>
-          <Link 
-            to="/salesman/profile" 
-            className={`sm-nav-link ${isActive("/salesman/profile") ? "sm-active" : ""}`}
+          <Link
+            to="/salesman/profile"
+            className={`sm-nav-link ${
+              isActive("/salesman/profile") ? "sm-active" : ""
+            }`}
           >
             <span className="sm-nav-icon">👤</span> Profile
           </Link>
-          <Link 
-            to="/salesman/shops" 
-            className={`sm-nav-link ${isActive("/salesman/shops") ? "sm-active" : ""}`}
+          <Link
+            to="/salesman/shops"
+            className={`sm-nav-link ${
+              isActive("/salesman/shops") ? "sm-active" : ""
+            }`}
           >
             <span className="sm-nav-icon">🏪</span> My Shops
           </Link>
-          {/* <Link 
-            to="/salesman/commission" 
-            className={`sm-nav-link ${isActive("/salesman/commission") ? "sm-active" : ""}`}
-          >
-            <span className="sm-nav-icon">💰</span> Commission
-          </Link> */}
         </nav>
 
         <button className="sm-logout-btn" onClick={handleLogout}>
